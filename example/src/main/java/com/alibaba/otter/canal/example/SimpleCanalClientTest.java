@@ -24,12 +24,13 @@ public class SimpleCanalClientTest extends AbstractCanalClientTest {
         String ip = AddressUtils.getHostIp();
         CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress(ip, 11111),
             destination,
-            "",
+            "root",
             "");
 
         final SimpleCanalClientTest clientTest = new SimpleCanalClientTest(destination);
         clientTest.setConnector(connector);
         clientTest.start();
+        logger.info("SimpleCanalClientTest started...");
         Runtime.getRuntime().addShutdownHook(new Thread() {
 
             public void run() {
